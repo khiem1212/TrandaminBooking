@@ -14,7 +14,7 @@ const instance = axios.create({
 instance.interceptors.request.use((config) => {
   config.headers = {
     ...config.headers,
-    token: "Bearer " + localStorage.getItem("token"),
+    token:  localStorage.getItem("token"),
   };
   return config;
 });
