@@ -11,7 +11,7 @@ const initialState = {
 };
 
 // shallow
-const reducer = (state = initialState, action) => {
+const roomReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_Room: {
       const nextState = produce(state, (draft) => {
@@ -47,4 +47,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default roomReducer;

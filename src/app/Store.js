@@ -3,13 +3,17 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import authReducer from "../features/authencation/aulthSlice";
 
 import thunk from "redux-thunk";
+import roomReducer from "../features/Room/rommSlice";
+import userReducer from "../features/User/UserSlice";
+import locationreducer from "../features/Location/locationSlice";
 
 const rootReducer = combineReducers({
  
   auth: authReducer,
-//   room: roomReducer,
-//   user: userReducer,
-//   comment:commentReducer,
+  room: roomReducer,
+  user: userReducer,
+  location:locationreducer
+  
 });
 
 // middleware: lưu log những action đc gửi lên store

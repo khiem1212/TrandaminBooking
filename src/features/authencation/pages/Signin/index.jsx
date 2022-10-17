@@ -9,24 +9,27 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import instance from "../../../../api/instance";
-import { SET_PROFILE } from "../../action";
+import { fetchUserDetailAction, SET_ID, SET_PROFILE, SET_Profile_User } from "../../action";
 
 const schema = yup.object({
-  taiKhoan: yup.string().required("*Trường này bắt buộc nhập"),
-  matKhau: yup.string().required("*Trường này bắt buộc nhập"),
+  email: yup.string().required("*Trường này bắt buộc nhập"),
+  password: yup.string().required("*Trường này bắt buộc nhập"),
 });
 
+
 function Signin() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
-      taiKhoan: "",
-      matKhau: "",
+      email: "",
+      password: "",
     },
     onSubmit: (values) => {
       signIn(values);
+     
     },
     validationSchema: schema,
   });
@@ -35,16 +38,19 @@ function Signin() {
     try {
       setIsLoading(true);
       const res = await instance.request({
-        url: "/api/QuanLyNguoiDung/DangNhap",
+        url: "/api/auth/signin",
         method: "POST",
         data: user,
       });
 
       const profile = { ...res.data.content };
       delete profile.accessToken;
-
-      localStorage.setItem("token", res.data.content.accessToken);
-      dispatch({ type: SET_PROFILE, payload: profile });
+ 
+      localStorage.setItem("id", res.data.content.user.id);
+      localStorage.setItem("token", res.data.content.token);
+    
+      dispatch(fetchUserDetailAction(profile.user.id ));
+      history.push("/Rooms");
     } catch (err) {
       console.log(err);
     } finally {
@@ -57,27 +63,27 @@ function Signin() {
       <h2 className={styles.title}>Sign In</h2>
       <form onSubmit={formik.handleSubmit} className={styles.form}>
         <Input
-          name="taiKhoan"
+          name="email"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           className={styles.input}
           type="text"
           placeholder="Username"
         />
-        {formik.touched.taiKhoan && formik.errors.taiKhoan && (
-          <p className={styles.errorText}>{formik.errors.taiKhoan}</p>
+        {formik.touched.email && formik.errors.email && (
+          <p className={styles.errorText}>{formik.errors.email}</p>
         )}
 
         <Input
-          name="matKhau"
+          name="password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           className={styles.input}
           type="password"
           placeholder="Password"
         />
-        {formik.touched.matKhau && formik.errors.matKhau && (
-          <p className={styles.errorText}>{formik.errors.matKhau}</p>
+        {formik.touched.password && formik.errors.password && (
+          <p className={styles.errorText}>{formik.errors.password}</p>
         )}
 
         <Button type="primary" htmlType="submit" loading={isLoading}>

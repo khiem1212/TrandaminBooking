@@ -61,14 +61,14 @@ export const fetchUserUpdateAction = (id,data) => {
   return async (dispatch) => {
     try {
       const res = await instance.request({
-        url: `/api/phong-thue/${id}`,
+        url: `/api/users/${id}`,
         method: "PUT",
         params: {
           id: id,
         },
         data:data
       });
-
+      alert("Action success")
       dispatch({
         type: SET_Update_User,
         payload: res.data.content,
@@ -103,7 +103,7 @@ export const fetchAddUser = (data) => {
         method: "POST",
         data: data,
       });
-
+      alert("Action success")
       dispatch({
         type: SET_ADD_User,
         payload: res.data.content,

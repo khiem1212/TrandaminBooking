@@ -11,11 +11,12 @@ export const  SET_Coment_Room = "Room/ SET_Coment_Room";
 export const  SET_DeletedComment_Room = "Room/ SET_DeletedComment_Room";
 export const  SET_EditComment_Room = "Room/ SET_EditComment_Room";
 export const  SET_AddComment_Room = "Room/ SET_AddComment_Room";
+export const   SET_Update_Image_Room = "Room/  SET_Update_Image_Room";
 
 export const fetchRoomAction = async (dispatch) => {
   try {
     const res = await instance.request({
-      url: "/api/QuanLyPhim/LayDanhSachPhim",
+      url: "/api/phong-thue",
       method: "GET",
     });
 
@@ -76,9 +77,28 @@ export const fetchRoomUpdateAction = (id,data) => {
         },
         data:data
       });
-
+      alert("Action success")
       dispatch({
         type: SET_Update_Room,
+        payload: res.data.content,
+      });
+    } catch (err) {}
+  };
+};
+export const fetchRoomUpdateImageAction = (id,data) => {
+  return async (dispatch) => {
+    try {
+      const res = await instance.request({
+        url:"/api/phong-thue/upload-hinh-phong",
+        method: "POST",
+        params: {
+          maPhong: id,
+        },
+        data:data
+      });
+    
+      dispatch({
+        type: SET_Update_Image_Room,
         payload: res.data.content,
       });
     } catch (err) {}
@@ -111,7 +131,7 @@ export const fetchAddRoom = (data) => {
         method: "POST",
         data: data,
       });
-
+      alert("Add success")
       dispatch({
         type: SET_ADD_Room,
         payload: res.data.content,

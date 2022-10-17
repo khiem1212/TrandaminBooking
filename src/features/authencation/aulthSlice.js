@@ -1,13 +1,15 @@
-import { SET_PROFILE } from "./action";
+import {  SET_Profile_User } from "./action";
 import { produce } from "immer";
 
 const initialState = {
   profile: null,
+  
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_PROFILE:
+   
+    case SET_Profile_User:
       return produce(state, (draft) => {
         draft.profile = action.payload;
       });

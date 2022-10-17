@@ -11,11 +11,18 @@ import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import Headerr from "../common/componets/Header";
 
 
-const Signup = lazy(() => import("../features/authencation/pages/Signup"));
+
+
 const Signin = lazy(() => import("../features/authencation/pages/Signin"));
 const Rooms = lazy(() => import("../features/Room/pages/Rooms"));
 const AddRoom = lazy(() => import("../features/Room/pages/AddRoom"));
 const EditRoom = lazy(() => import("../features/Room/pages/EditRoom"));
+const Users = lazy(() => import("../features/User/pages/Users"));
+const EditUser = lazy(() => import("../features/User/pages/EditUser"));
+const Locations = lazy(() => import("../features/Location/pages/Locations"));
+const EditLocation = lazy(() => import("../features/Location/pages/EditLocations"));
+const AddUser = lazy(() => import("../features/User/pages/AddUser"));
+const AddLocation = lazy(() => import("../features/Location/pages/AddLocation"));
 
 function App() {
   return (
@@ -27,11 +34,7 @@ function App() {
               <Signin />
             </Headerr>
           </Route>
-          <Route path="/signUp">
-            <Headerr>
-              <Signup />
-            </Headerr>
-          </Route>
+         
           <Route path="/Rooms">
             <Headerr>
              <Rooms/>
@@ -42,9 +45,39 @@ function App() {
               <AddRoom />
             </Headerr>
           </Route>
-          <Route path="/EditRoom">
+          <Route path="/AddUser">
+            <Headerr>
+              <AddUser />
+            </Headerr>
+          </Route>
+          <Route path="/Users">
+            <Headerr>
+              <Users />
+            </Headerr>
+          </Route>
+          <Route path="/Locations">
+            <Headerr>
+              <Locations />
+            </Headerr>
+          </Route>
+          <Route path="/AddLocation">
+            <Headerr>
+              <AddLocation />
+            </Headerr>
+          </Route>
+          <Route path="/EditRoom/:id">
             <Headerr>
               <EditRoom />
+            </Headerr>
+          </Route>
+          <Route path="/EditLocation/:id">
+            <Headerr>
+              <EditLocation />
+            </Headerr>
+          </Route>
+          <Route path="/EditUser/:id">
+            <Headerr>
+              < EditUser/>
             </Headerr>
           </Route>
 

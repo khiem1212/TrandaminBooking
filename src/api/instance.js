@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://airbnbnew.cybersoft.edu.vn/swagger/index.html",
+  baseURL: "https://airbnbnew.cybersoft.edu.vn",
   headers: {
     TokenCybersoft:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJGcm9udCBFbmQgNzIiLCJIZXRIYW5TdHJpbmciOiIzMS8wMS8yMDIzIiwiSGV0SGFuVGltZSI6IjE2NzUxMjMyMDAwMDAiLCJuYmYiOjE2NTAzODc2MDAsImV4cCI6MTY3NTI3MDgwMH0.AIuCmZwqwz4ytkjLFFDsoctOuwji561du2mf20MNwnc",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJGcm9udCBFbmQgNzIiLCJIZXRIYW5TdHJpbmciOiIxNC8wMi8yMDIzIiwiSGV0SGFuVGltZSI6IjE2NzYzMzI4MDAwMDAiLCJuYmYiOjE2NTAzODc2MDAsImV4cCI6MTY3NjQ4MDQwMH0.e3UrKdKqwFislz0cqribEEthuaW4HOuD4xwr1CTRQwg",
   },
   timeout: 10000,
 });
@@ -15,7 +15,9 @@ instance.interceptors.request.use((config) => {
   config.headers = {
     ...config.headers,
     token:  localStorage.getItem("token"),
+   
   };
+  
   return config;
 });
 

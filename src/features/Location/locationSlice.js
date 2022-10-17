@@ -11,7 +11,7 @@ const initialState = {
 };
 
 // shallow
-const reducer = (state = initialState, action) => {
+const locationreducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_Location: {
       const nextState = produce(state, (draft) => {
@@ -42,4 +42,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default locationreducer;

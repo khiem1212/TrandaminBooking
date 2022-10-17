@@ -64,14 +64,14 @@ export const fetchLocationUpdateAction = (id,data) => {
   return async (dispatch) => {
     try {
       const res = await instance.request({
-        url: `/api/vi-tri${id}`,
+        url: `/api/vi-tri/${id}`,
         method: "PUT",
         params: {
           id: id,
         },
         data:data
       });
-
+      alert("Action success")
       dispatch({
         type: SET_Update_Location,
         payload: res.data.content,
@@ -79,6 +79,8 @@ export const fetchLocationUpdateAction = (id,data) => {
     } catch (err) {}
   };
 };
+
+
 
 export const fetchLocationDetailAction = (id) => {
   return async (dispatch) => {
@@ -106,7 +108,7 @@ export const fetchAddLocation = (data) => {
         method: "POST",
         data: data,
       });
-
+      alert("Action success")
       dispatch({
         type: SET_ADD_Location,
         payload: res.data.content,
