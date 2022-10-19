@@ -138,7 +138,7 @@ function Rooms() {
           marginTop: "20px",
         }}
       >
-        DANH SÁCH PHIM
+     ROOM LIST
       </h2>
       <Search
         style={{ margin: "20px", width: "800px" }}

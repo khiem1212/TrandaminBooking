@@ -18,6 +18,7 @@ function Users() {
     dispatch(fetchUserFindAction(value));
   };
   const deleted = (value) => {
+    console.log(value)
     dispatch(fetchUserDeleteAction(value));
     dispatch(fetchUserAction);
   };
@@ -163,7 +164,7 @@ function Users() {
           marginTop: "20px",
         }}
       >
-        DANH SÁCH PHIM
+ USER LIST
       </h2>
       <Search
         style={{ margin: "20px", width: "800px" }}

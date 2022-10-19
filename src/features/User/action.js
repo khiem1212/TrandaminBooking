@@ -24,18 +24,18 @@ export const fetchUserDeleteAction = (id) => {
   return async (dispatch) => {
     try {
       const res = await instance.request({
-        url: `/api/users/${id}`,
+        url: `/api/users`,
         method: "DELETE",
         params: {
           id: id,
         },
       });
-
+      alert("xoa  thanh cong");
       dispatch({
         type: SET_DELETED_User,
         payload: res.data.content,
       });
-      alert("xoa phong thanh cong");
+      
     } catch (err) {}
   };
 };

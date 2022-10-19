@@ -161,7 +161,7 @@ function Locations() {
           marginTop: "20px",
         }}
       >
-        DANH SÁCH PHIM
+      LOCATION LIST
       </h2>
       <Search
         style={{ margin: "20px", width: "800px" }}
